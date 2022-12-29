@@ -1,0 +1,2 @@
+obj\Debug\net6.0\Protos/Shkolas.cs \
+obj\Debug\net6.0\Protos/ShkolasGrpc.cs: Protos/shkolas.proto

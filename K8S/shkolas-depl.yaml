@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shkolas-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: schoolservice
+  template:
+    metadata:
+      labels:
+        app: schoolservice
+    spec:
+      containers:
+        - name: schoolservice
+          image: steelseries/schoolservice:latest
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shkolas-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: schoolservice
+  ports:
+  - name: schoolservice
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: shkolagrpc
+    protocol: TCP
+    port: 666
+    targetPort: 666

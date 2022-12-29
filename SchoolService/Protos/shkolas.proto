@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option csharp_namespace = "SchoolService";
+
+service GrpcShkola {
+    rpc GetAllShkolas (GetAllRequest) returns (ShkolaResponse);
+}
+
+message GetAllRequest {}
+
+message GrpcShkolaModel{
+    int32 shkolaId = 1;
+    string name = 2;
+    string publisher = 3;
+}
+
+message ShkolaResponse {
+    repeated GrpcShkolaModel shkola = 1;
+}
